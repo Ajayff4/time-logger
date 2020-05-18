@@ -1,3 +1,33 @@
+#add-tag-form *{
+    width: 40%;
+}
+
+#add-log-dropdown, 
+#add-log-submit,
+#add-log-details{
+    width: 40%;
+}
+
+textarea::placeholder{
+    color: white;
+}
+
+#editButton{
+    background-color: #00D477;
+    width: 60px;
+    border-radius: 5px 0px 0px 5px;
+    box-shadow: none;
+    height: 40px;
+}
+
+#deleteButton{
+    background-color: #E75B65;
+    width: 60px;
+    border-radius: 0px 5px 5px 0px;
+    box-shadow: none;
+    height: 40px;
+}
+
 #menu-bar{
     position: relative;
     text-align: center;
@@ -8,18 +38,11 @@ select, textarea{
     background-color: black;
 }
 
-#add-log-left{
-    float: left;
-}
-
 #add-log-form{
-    width: 25%;
+    width: 40%;
     padding-top: 30px;
 }
 
-#add-log-right{
-    float: right;
-}
 .log-table-css{
     width: 70%;
 }

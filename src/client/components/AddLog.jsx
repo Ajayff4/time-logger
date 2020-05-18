@@ -21,20 +21,18 @@ class AddLog extends Component {
             <>
                 <center>
                     <div id="add-log-form">
-                        <div id="add-log-left">
-                            <select>
-                                {
-                                    this.tags.map(tag => {
-                                        return <option key={tag} value={tag}>{tag}</option>
-                                    })
-                                }
-                            </select>
-                            <br />
-                            <button type="submit">Add</button>
-                        </div >
-                        <div id="add-log-right">
-                            <textarea name="details" id="details" placeholder="Input details of log(optional)" />
-                        </div>
+                        <select id="add-log-dropdown">
+                            {
+                                this.tags.map(tag => {
+                                    return <option key={tag} value={tag}>{tag}</option>
+                                })
+                            }
+                        </select>
+
+                        <br />
+                        <textarea name="details" id="add-log-details" placeholder="Input details of log(optional)" />
+                        <br />
+                        <button type="submit" id="add-log-submit">Add</button>
                     </div>
                 </center>
             </>

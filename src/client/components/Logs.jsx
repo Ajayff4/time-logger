@@ -3,10 +3,20 @@ import React, { Component } from 'react'
 class Logs extends Component {
     tableData = [
         {
+            "key": "#",
+            "tag": "Tag",
+            "category": "Category",
+            "time": "Time",
+            "duration": "Duration",
+            "details": "Details",
+            "operations": "Operations"
+        },
+        {
             "key": 1,
             "tag": "sleeping",
             "category": "official",
             "time": "8:30 AM",
+            "duration": "5min",
             "details": "--"
         },
         {
@@ -14,6 +24,7 @@ class Logs extends Component {
             "tag": "sleeping",
             "category": "official",
             "time": "8:30 AM",
+            "duration": "10min",
             "details": "--"
         },
         {
@@ -21,6 +32,7 @@ class Logs extends Component {
             "tag": "sleeping",
             "category": "official",
             "time": "8:30 AM",
+            "duration": "15min",
             "details": "--"
         },
         {
@@ -28,6 +40,7 @@ class Logs extends Component {
             "tag": "sleeping",
             "category": "official",
             "time": "8:30 AM",
+            "duration": "20min",
             "details": "--"
         },
         {
@@ -35,6 +48,7 @@ class Logs extends Component {
             "tag": "sleeping",
             "category": "official",
             "time": "8:30 AM",
+            "duration": "25min",
             "details": "--"
         },
         {
@@ -42,6 +56,7 @@ class Logs extends Component {
             "tag": "sleeping",
             "category": "official",
             "time": "8:30 AM",
+            "duration": "30min",
             "details": "--"
         },
         {
@@ -49,6 +64,7 @@ class Logs extends Component {
             "tag": "sleeping",
             "category": "official",
             "time": "8:30 AM",
+            "duration": "35min",
             "details": "--"
         },
         {
@@ -56,6 +72,7 @@ class Logs extends Component {
             "tag": "sleeping",
             "category": "official",
             "time": "8:30 AM",
+            "duration": "40min",
             "details": "--"
         },
         {
@@ -63,6 +80,7 @@ class Logs extends Component {
             "tag": "sleeping",
             "category": "official",
             "time": "8:30 AM",
+            "duration": "45min",
             "details": "--"
         },
         {
@@ -70,6 +88,7 @@ class Logs extends Component {
             "tag": "sleeping",
             "category": "official",
             "time": "8:30 AM",
+            "duration": "50min",
             "details": "--"
         },
         {
@@ -77,6 +96,7 @@ class Logs extends Component {
             "tag": "sleeping",
             "category": "official",
             "time": "8:30 AM",
+            "duration": "55min",
             "details": "--"
         },
         {
@@ -84,10 +104,12 @@ class Logs extends Component {
             "tag": "sleeping",
             "category": "official",
             "time": "8:30 AM",
+            "duration": "60min",
             "details": "--"
         }
     ];
     render() {
+        let BUTTON_FLAG = false;
         return (
             <>
                 <h2>Logs Component</h2>
@@ -96,11 +118,18 @@ class Logs extends Component {
                         <table className="table table-dark table-striped log-table-css">
                             <tbody>
                                 {
+
                                     this.tableData.map(row => {
                                         let rowData = [];
+                                        rowData.push(<tr>
+
+                                        </tr>)
                                         for (let attribute in row) {
-                                            rowData.push(<><td key={attribute}>{row[attribute]}</td></>);
+                                            rowData.push(<><td key={attribute + row.id}>{row[attribute]}</td></>);
                                         }
+                                        if (BUTTON_FLAG === true)
+                                            rowData.push(<td><button id="editButton">Edit</button><button id="deleteButton">Delete</button></td>);
+                                        BUTTON_FLAG = true;
                                         return (<tr key={row.id}>{rowData}</tr>);
                                     })
                                 }
