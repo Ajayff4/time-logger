@@ -43,10 +43,6 @@ select, textarea{
     padding-top: 30px;
 }
 
-.log-table-css{
-    width: 70%;
-}
-
 div > fieldset {
     width: 30%;
 }
@@ -58,7 +54,8 @@ fieldset{
 }
 
 input[type=text], 
-input[type=password]{
+input[type=password],
+input[type=email]{
     margin: 5px;
     background-color: black;
     color: royalblue;
@@ -69,12 +66,14 @@ input[type=password]{
 }
 
 input[type=text]:hover, 
+input[type=email]:hover, 
 input[type=password]:hover{
     background-color: black;
     color: royalblue;
 }
 
 input[type=text]::placeholder, 
+input[type=email]::placeholder, 
 input[type=password]::placeholder{
     color: white;
 }
