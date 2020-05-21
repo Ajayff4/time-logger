@@ -3,6 +3,8 @@ var bodyParser = require("body-parser");
 var mysql = require("mysql");
 var app = express();
 var async = require("async");
+var jwt = require("jsonwebtoken");
+
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -53,6 +55,28 @@ app.post("/login", (req, res) => {
             console.error("query error in login");
         } else {
             if (resp.length > 0) {
+                // let user = {
+                //     username: resp[0].username,
+                //     fullname: resp[0].fullname,
+                //     email: resp[0].email
+                // };
+
+                // let secrectkey = 'keyboard-cat';
+
+                // jwt.sign({ user }, secrectkey, { expiresIn: '30s' }, (err, token) => {
+                //     if (err) {
+                //         console.log("Error in token generation: ", err);
+                //     } else {
+                //         res.json({
+                //             token
+                //         });
+                //         resp[0].token = token;
+                //     }
+                // });
+
+                console.log("login successful.", resp[0].username);
+                res.send(JSON.stringify(resp[0]));
+
                 /****************************FIRST LOG LOGIC WILL COME HERE************************/
                 //app.post("/check-first-log-exist", (req, res) => {
                 //     console.log("inside check-first-log-exist");
@@ -70,8 +94,6 @@ app.post("/login", (req, res) => {
                 // })
 
                 /****************************************************/
-                console.log("login successful.", resp[0].username);
-                res.send(JSON.stringify(resp[0]));
             } else {
                 res.send(JSON.stringify({}));
             }

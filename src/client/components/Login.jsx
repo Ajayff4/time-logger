@@ -21,10 +21,11 @@ class Login extends Component {
             username: username,
             password: sha256(password)
         }).then(res => {
-            this.props.history.push('/add-log');
+            console.log("response: ", res.data);
+            this.props.history.push('/logs');
         }).catch(err => {
             console.error("post: ", err);
-            this.props.handleErrors(err);
+            //this.props.handleErrors(err);
         });
     }
 

@@ -27,7 +27,7 @@ class Logs extends Component {
             for (let field in log) {
                 row.push(<td key={field + log[field]}>{log[field]}</td>)
             }
-            row.push(<td><button id="editButton">Edit</button><button id="deleteButton">Delete</button></td>)
+            row.push(<td key={i + "edit-delete"}><button id="editButton">Edit</button><button id="deleteButton">Delete</button></td>)
             tableData.push(<tr key={i + row}>{row}</tr >);
         });
 
