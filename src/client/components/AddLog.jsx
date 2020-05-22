@@ -24,14 +24,12 @@ class AddLog extends Component {
                     this.setState({ tags: { ...res.data } });
                 }).catch(err => {
                     console.error("post cat: ", err);
-                    //this.props.handleErrors(err);
                 });
         }
     }
 
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
-        console.log("updated")
     }
 
     onSubmit = (e) => {
@@ -62,7 +60,6 @@ class AddLog extends Component {
             this.props.history.push('/logs');
         }).catch(err => {
             console.error("post: ", err);
-            this.props.handleErrors(err);
         });
     }
 
@@ -74,7 +71,7 @@ class AddLog extends Component {
         return (
             <>
                 <center>
-                    <div id="add-log-form">
+                    <div id="form-css">
                         <form method="POST" onSubmit={this.onSubmit} >
                             <select
                                 id="add-log-dropdown"

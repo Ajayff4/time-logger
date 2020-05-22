@@ -31,7 +31,6 @@ class Signup extends Component {
                 this.props.history.push('/add-log');
             }).catch(err => {
                 console.error("post: ", err);
-                this.props.handleErrors(err);
             });
         }
     }

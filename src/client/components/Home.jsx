@@ -9,15 +9,15 @@ import Signup from './Signup';
 import AddCategory from './AddCategory';
 
 class Home extends Component {
-    handleErrors = (err) => {
-        if (err.response) {
-            console.log("Problem with response: ", err.response);
-        } else if (err.request) {
-            console.log("Problem with request: ", err.request);
-        } else {
-            console.log("Error: ", err.message);
-        }
-    }
+    // handleErrors = (err) => {
+    //     if (err.response) {
+    //         console.log("Problem with response: ", err.response);
+    //     } else if (err.request) {
+    //         console.log("Problem with request: ", err.request);
+    //     } else {
+    //         console.log("Error: ", err.message);
+    //     }
+    // }
 
     render() {
         return (
@@ -33,13 +33,13 @@ class Home extends Component {
                     </ul>
                     {
                         <Switch>
-                            <Route path="/login"><Login handleError={this.handleErrors} /></Route>
-                            <Route path="/add-log"><AddLog handleError={this.handleErrors} /></Route>
-                            <Route path="/logs"><Logs handleError={this.handleErrors} /></Route>
-                            <Route path="/add-tag"><AddTag handleError={this.handleErrors} /></Route>
-                            <Route path="/add-category"><AddCategory handleError={this.handleErrors} /></Route>
-                            <Route path="/profile"><Profile handleError={this.handleErrors} /></Route>
-                            <Route path="/signup"><Signup handleError={this.handleErrors} /></Route>
+                            <Route path="/login"><Login /></Route>
+                            <Route path="/add-log"><AddLog /></Route>
+                            <Route path="/logs"><Logs /></Route>
+                            <Route path="/add-tag"><AddTag /></Route>
+                            <Route path="/add-category"><AddCategory /></Route>
+                            <Route path="/profile"><Profile /></Route>
+                            <Route path="/signup"><Signup /></Route>
                         </Switch>
                     }
                 </Router>

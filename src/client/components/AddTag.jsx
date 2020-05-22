@@ -13,6 +13,10 @@ class AddTag extends Component {
         };
     }
 
+    goToAddLogs = () => {
+        this.props.history.push("/add-log");
+    }
+
     componentDidMount() {
         if (this.state.categories !== {}) {
             axios.post("/categories")
@@ -20,7 +24,6 @@ class AddTag extends Component {
                     this.setState({ categories: { ...res.data } });
                 }).catch(err => {
                     console.error("post cat: ", err);
-                    //this.props.handleErrors(err);
                 });
         }
 
@@ -42,7 +45,6 @@ class AddTag extends Component {
             this.props.history.push('/add-log');
         }).catch(err => {
             console.error("post: ", err);
-            this.props.handleErrors(err);
         });
     }
 
@@ -55,7 +57,7 @@ class AddTag extends Component {
             <>
                 <h2>Add Tag Component</h2>
                 <center>
-                    <div id="add-tag-form">
+                    <div id="form-css">
                         <form method="POST" onSubmit={this.onSubmit}>
                             <input
                                 type="text"
@@ -83,6 +85,9 @@ class AddTag extends Component {
                             <br />
                             {/* eslint-disable-next-line */}
                             <a href="#" onClick={this.createCategory}>Create a new category</a>
+                            <br />
+                            {/* eslint-disable-next-line */}
+                            <a href="#" onClick={this.goToAddLogs}>back to add log</a>
                         </form>
                     </div>
                 </center>

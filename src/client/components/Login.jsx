@@ -25,7 +25,6 @@ class Login extends Component {
             this.props.history.push('/logs');
         }).catch(err => {
             console.error("post: ", err);
-            //this.props.handleErrors(err);
         });
     }
 

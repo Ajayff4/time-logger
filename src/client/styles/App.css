@@ -1,18 +1,23 @@
-#add-tag-form *{
+#form-css * {
     width: 40%;
 }
 
-#add-log-dropdown, 
+#form-css {
+    padding-top: 30px;
+    padding: 20px;
+}
+
+#add-log-dropdown,
 #add-log-submit,
-#add-log-details{
+#add-log-details {
     width: 40%;
 }
 
-textarea::placeholder{
+textarea::placeholder {
     color: white;
 }
 
-#editButton{
+#editButton {
     background-color: #00D477;
     width: 60px;
     border-radius: 5px 0px 0px 5px;
@@ -20,7 +25,7 @@ textarea::placeholder{
     height: 40px;
 }
 
-#deleteButton{
+#deleteButton {
     background-color: #E75B65;
     width: 60px;
     border-radius: 0px 5px 5px 0px;
@@ -28,34 +33,31 @@ textarea::placeholder{
     height: 40px;
 }
 
-#menu-bar{
+#menu-bar {
     position: relative;
     text-align: center;
 }
 
-select, textarea{
+select,
+textarea {
     color: royalblue;
     background-color: black;
+    padding: 10px;
 }
 
-#add-log-form{
-    width: 40%;
-    padding-top: 30px;
-}
-
-div > fieldset {
+div>fieldset {
     width: 30%;
 }
 
-fieldset{
+fieldset {
     border-radius: 5px;
     border: 2px;
     border-color: black;
 }
 
-input[type=text], 
+input[type=text],
 input[type=password],
-input[type=email]{
+input[type=email] {
     margin: 5px;
     background-color: black;
     color: royalblue;
@@ -65,20 +67,20 @@ input[type=email]{
     box-shadow: 5px 8px 8px #888888;
 }
 
-input[type=text]:hover, 
-input[type=email]:hover, 
-input[type=password]:hover{
+input[type=text]:hover,
+input[type=email]:hover,
+input[type=password]:hover {
     background-color: black;
     color: royalblue;
 }
 
-input[type=text]::placeholder, 
-input[type=email]::placeholder, 
-input[type=password]::placeholder{
+input[type=text]::placeholder,
+input[type=email]::placeholder,
+input[type=password]::placeholder {
     color: white;
 }
 
-input[type=submit]{
+input[type=submit] {
     border-radius: 5px;
     color: royalblue;
     background-color: black;
@@ -88,19 +90,19 @@ input[type=submit]{
     box-shadow: 5px 8px 8px #888888;
 }
 
-ul > li{
+ul>li {
     text-decoration: none;
     display: inline;
     text-align: center;
 }
 
-ul > li:hover{
+ul>li:hover {
     transition: 2s;
     color: black;
     background-color: royalblue;
 }
 
-button{
+button {
     border-radius: 2px;
     color: royalblue;
     background-color: black;
@@ -110,19 +112,22 @@ button{
     box-shadow: 5px 8px 8px #888888;
 }
 
-button:hover, input[type=submit]:hover{
+button:hover,
+input[type=submit]:hover {
     background-color: royalblue;
     color: black;
     transition: 1.0s;
 }
 
-#logout{
+#logout {
     justify-items: right;
 }
 
 
 legend.scheduler-border {
-    width:inherit; /* Or auto */
-    padding:0 10px; /* To give a bit of padding on the left and right */
-    border-bottom:none;
+    width: inherit;
+    /* Or auto */
+    padding: 0 10px;
+    /* To give a bit of padding on the left and right */
+    border-bottom: none;
 }

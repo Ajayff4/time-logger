@@ -1,0 +1,14 @@
+const ACTION = {
+    ADD_LOG: "ADD_LOG",
+    ADD_TAG: "ADD_TAG",
+    ADD_CATEGORY: "ADD_CATEGORY",
+    LOGIN: "LOGIN",
+    LOGOUT: "LOGOUT",
+    SIGNUP: "SIGNUP",
+    PROFILE_LOAD: "PROFILE_LOAD",
+    ERROR: "ERROR"
+}
+
+export {
+    ACTION
+};

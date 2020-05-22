@@ -2,7 +2,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var mysql = require("mysql");
 var app = express();
-var async = require("async");
 var jwt = require("jsonwebtoken");
 
 app.use(bodyParser.urlencoded({
@@ -35,7 +34,12 @@ localhost:8080/categories
 
 
 app.post("/signup", (req, res) => {
-    let data = { username: req.body.username, fullname: req.body.fullname, email: req.body.email, password: req.body.password };
+    let data = {
+        username: req.body.username,
+        fullname: req.body.fullname,
+        email: req.body.email,
+        password: req.body.password
+    };
     let sql = "INSERT INTO users SET ?";
     con.query(sql, data, function (err, resp) {
         if (err) {
@@ -76,24 +80,6 @@ app.post("/login", (req, res) => {
 
                 console.log("login successful.", resp[0].username);
                 res.send(JSON.stringify(resp[0]));
-
-                /****************************FIRST LOG LOGIC WILL COME HERE************************/
-                //app.post("/check-first-log-exist", (req, res) => {
-                //     console.log("inside check-first-log-exist");
-                //     let sql_first_log_exist = "SELECT date_time FROM logs WHERE tag='first-log' ORDER BY id DESC LIMIT 1";
-                //     con.query(sql_first_log_exist, function (err, resp) {
-                //         if (err) {
-                //             console.log("query error in check first log exist");
-                //         } else {
-                //             //if (req_date !== resp.data.date_time.toLocaleDateString()) 
-                //             {
-
-                //             }
-                //         }
-                //     })
-                // })
-
-                /****************************************************/
             } else {
                 res.send(JSON.stringify({}));
             }
@@ -102,7 +88,12 @@ app.post("/login", (req, res) => {
 });
 
 app.post("/signup", (req, res) => {
-    let data = { username: req.body.username, fullname: req.body.fullname, email: req.body.email, password: req.body.password };
+    let data = {
+        username: req.body.username,
+        fullname: req.body.fullname,
+        email: req.body.email,
+        password: req.body.password
+    };
     let sql = "INSERT INTO users SET ?";
     con.query(sql, data, function (err, resp) {
         if (err) {
@@ -148,8 +139,23 @@ app.get("/tags", (req, res) => {
     })
 });
 
+app.get('/logs', (req, res) => {
+    let sql = "SELECT id, logs.tag, category_fk, date_time, duration, log_details FROM logs, tags WHERE logs.tag=tags.tag";
+    con.query(sql, function (err, resp) {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(resp);
+            res.send(JSON.stringify(resp));
+        }
+    })
+})
+
 app.post("/add-tag", (req, res) => {
-    let data = { tag: req.body.tag, category_fk: req.body.category };
+    let data = {
+        tag: req.body.tag,
+        category_fk: req.body.category
+    };
     console.log(data);
     let sql = "INSERT INTO tags SET ?";
     con.query(sql, data, function (err, resp) {
@@ -162,10 +168,12 @@ app.post("/add-tag", (req, res) => {
     })
 });
 
-app.post("/add-tag", (req, res) => {
-    let data = { tag: req.body.tag, category_fk: req.body.category };
+app.post("/add-category", (req, res) => {
+    let data = {
+        category: req.body.category
+    };
     console.log(data);
-    let sql = "INSERT INTO tags SET ?";
+    let sql = "INSERT INTO categories SET ?";
     con.query(sql, data, function (err, resp) {
         if (err) {
             console.error("query error in tag insertion");
@@ -174,6 +182,29 @@ app.post("/add-tag", (req, res) => {
             res.send(JSON.stringify(res[0]));
         }
     })
+});
+
+app.post("/add-log", (req, res) => {
+    console.log("inside add-log");
+    var data = {
+        id: null,
+        tag: req.body.tag,
+        date_time: new Date(),
+        duration: req.body.duration,
+        log_details: req.body.log_details
+    };
+
+    let sql = "INSERT INTO logs SET ?";
+
+    con.query(sql, data, function (err, resp) {
+        if (err) {
+            console.log("Error in add log");
+            return parallel_done(err);
+        } else {
+            console.log("adding log");
+            res.send(JSON.stringify(resp[0]));
+        }
+    });
 });
 
 app.post("/first-log", (req, res) => {
@@ -181,7 +212,6 @@ app.post("/first-log", (req, res) => {
     let data = {
         id: null,
         tag: "first-log",
-        category: "official",
         date_time: new Date(),
         duration: 0,
         log_details: "Starting logging the day"
@@ -197,67 +227,3 @@ app.post("/first-log", (req, res) => {
         }
     })
 });
-
-app.post("/add-log", (req, res) => {
-    console.log("inside add-log");
-    var returnData = {};
-    var data = {
-        id: null,
-        tag: req.body.tag,
-        category: "--",
-        date_time: new Date(),
-        duration: req.body.duration,
-        log_details: req.body.log_details
-    };
-
-    let sql_get_category = "SELECT category_fk FROM `tags` WHERE tag=" + "'" + req.body.tag + "'";
-    let sql_insert_log = "INSERT INTO logs SET ?";
-
-    async.parallel([
-        function (parallel_done) {
-            con.query(sql_get_category, {}, function (err, resp) {
-                if (err) {
-                    return parallel_done(err);
-                } else {
-                    console.log("fetching category");
-                    returnData.category = resp[0].category_fk;
-                    data.category = resp[0].category_fk;
-                    console.log("category: ", data.category);
-                    parallel_done();
-                }
-            });
-        },
-        function (parallel_done) {
-            con.query(sql_insert_log, data, function (err, resp) {
-                if (err) {
-                    return parallel_done(err);
-                } else {
-                    console.log("adding log");
-                    returnData.data = resp[0];
-                    res.send(JSON.stringify(resp[0]));
-                    parallel_done();
-                }
-
-            });
-        }
-    ], function (err) {
-        if (err) {
-            console.log("Error: ", err);
-            res.send(data);
-        }
-    });
-    console.log("data: ", returnData.category);
-});
-
-app.get('/logs', (req, res) => {
-    let sql = "SELECT * FROM logs";
-
-    con.query(sql, function (err, resp) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(resp);
-            res.send(JSON.stringify(resp));
-        }
-    })
-})

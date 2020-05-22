@@ -6,6 +6,10 @@
 .pnp.js
 package-lock.json
 
+#REDUX FILES
+/constants
+/actions
+
 # testing
 /coverage
 
