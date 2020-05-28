@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { profileLoad } from '../actions'
+import PropTypes from 'prop-types'
 
 const Profile = (props) => {
     useEffect(() => {
@@ -13,6 +14,12 @@ const Profile = (props) => {
             <h3>Entries made: {props.logsCount}</h3>
         </div>
     )
+}
+
+Profile.propTypes = {
+    username: PropTypes.string.isRequired,
+    logsCount: PropTypes.number.isRequired,
+    profileLoad: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => {
@@ -28,4 +35,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

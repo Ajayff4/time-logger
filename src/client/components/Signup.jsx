@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import sha256 from 'sha256';
-import { signup } from '../actions';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from 'react'
+import axios from 'axios'
+import sha256 from 'sha256'
+import { signup } from '../actions'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 class Signup extends Component {
@@ -16,12 +16,12 @@ class Signup extends Component {
     }
 
     onChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({ [e.target.name]: e.target.value })
     }
 
     onSubmit = (e) => {
-        e.preventDefault();
-        const { username, fullname, email, password, repassword } = this.state;
+        e.preventDefault()
+        const { username, fullname, email, password, repassword } = this.state
         if (password === repassword) {
             axios.post('/signup', {
                 fullname: fullname,
@@ -29,13 +29,13 @@ class Signup extends Component {
                 email: email,
                 password: sha256(password)
             }).then(res => {
-                console.log(res.status);
-                alert("ok");
-                this.props.signup();
-                this.props.history.push('/login');
+                console.log(res.status)
+                alert("ok")
+                this.props.signup()
+                this.props.history.push('/login')
             }).catch(err => {
-                console.error("post: ", err);
-            });
+                console.error("post: ", err)
+            })
         }
     }
 
@@ -110,4 +110,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(Signup));
+export default connect(null, mapDispatchToProps)(withRouter(Signup))

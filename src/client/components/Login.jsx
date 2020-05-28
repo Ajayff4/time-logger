@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import sha256 from 'sha256';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from 'react'
+import axios from 'axios'
+import sha256 from 'sha256'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { login } from '../actions'
+import PropTypes from 'prop-types'
 
 class Login extends Component {
-
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             username: "",
             password: "",
@@ -17,23 +17,23 @@ class Login extends Component {
     }
 
     onChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({ [e.target.name]: e.target.value })
     }
 
     onSubmit = (e) => {
-        e.preventDefault();
-        const { username, password } = this.state;
+        e.preventDefault()
+        const { username, password } = this.state
         axios.post('/login', {
             username: username,
             password: sha256(password)
         }).then(res => {
             this.setState({ user: res.data })
             const { username, password, fullname, email } = this.state.user
-            this.props.login(username, password, fullname, email);
-            this.props.history.push('/logs');
+            this.props.login(username, password, fullname, email)
+            this.props.history.push('/logs')
         }).catch(err => {
-            console.error("Error in fetching login data: ", err);
-        });
+            console.error("Error in fetching login data: ", err)
+        })
     }
 
     render() {
@@ -70,10 +70,15 @@ class Login extends Component {
     }
 }
 
+Login.propTypes = {
+    login: PropTypes.func.isRequired
+}
+
+
 const mapDispatchToProps = dispatch => {
     return {
         login: (username, password, fullname, email) => dispatch(login(username, password, fullname, email))
     }
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(Login));
+export default connect(null, mapDispatchToProps)(withRouter(Login))

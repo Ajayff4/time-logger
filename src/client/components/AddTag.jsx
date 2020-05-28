@@ -1,57 +1,57 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
-import AddLog from './AddLog';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import { addTag } from '../actions'
+import PropTypes from 'prop-types'
 
 class AddTag extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             tag: "",
             category: "",
             categories: {}
-        };
+        }
     }
 
     goToAddLogs = () => {
-        this.props.history.push("/add-log");
+        this.props.history.push("/add-log")
     }
 
     componentDidMount() {
         if (this.state.categories !== {}) {
             axios.post("/categories")
                 .then(res => {
-                    this.setState({ categories: { ...res.data } });
+                    this.setState({ categories: { ...res.data } })
                 }).catch(err => {
-                    console.error("post cat: ", err);
-                });
+                    console.error("post cat: ", err)
+                })
         }
 
     }
 
     onChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({ [e.target.name]: e.target.value })
     }
 
     onSubmit = (e) => {
-        e.preventDefault();
-        const { tag, category } = this.state;
+        e.preventDefault()
+        const { tag, category } = this.state
         axios.post('/add-tag', {
             tag: tag,
             category: category
         }).then(res => {
-            console.log(res.status);
-            this.props.addTag();
-            this.props.history.push('/add-log');
+            console.log(res.status)
+            this.props.addTag()
+            this.props.history.push('/add-log')
         }).catch(err => {
-            console.error("post: ", err);
-        });
+            console.error("post: ", err)
+        })
     }
 
     createCategory = () => {
-        this.props.history.push("/add-category");
+        this.props.history.push("/add-category")
     }
 
     render() {
@@ -77,7 +77,7 @@ class AddTag extends Component {
                                 <option key="choose" value="--">Choose category</option>
                                 {
                                     Object.entries(this.state.categories).map((category) => {
-                                        category = category[1]["category"];
+                                        category = category[1]["category"]
                                         return <option key={category} value={category}>{category}</option>
                                     })
                                 }
@@ -98,10 +98,15 @@ class AddTag extends Component {
     }
 }
 
+AddTag.propTypes = {
+    addTag: PropTypes.func.isRequired
+}
+
+
 const mapDispatchToProps = dispatch => {
     return {
         addTag: () => dispatch(addTag())
     }
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(AddTag));
+export default connect(null, mapDispatchToProps)(withRouter(AddTag))

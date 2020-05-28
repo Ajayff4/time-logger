@@ -1,36 +1,37 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
-import { addCategory } from '../actions';
-import { connect } from 'react-redux';
+import { addCategory } from '../actions'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 class AddCategory extends Component {
     constructor() {
-        super();
+        super()
         this.state = {
             category: ""
         }
     }
 
     goToAddTag = () => {
-        this.props.history.push("/add-tag");
+        this.props.history.push("/add-tag")
     }
 
     onChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({ [e.target.name]: e.target.value })
     }
 
     onSubmit = (e) => {
-        e.preventDefault();
-        const { category } = this.state;
+        e.preventDefault()
+        const { category } = this.state
         axios.post('/add-category', {
             category: category
         }).then(res => {
             this.props.addCategory()
             this.props.history.push('/add-log')
         }).catch(err => {
-            console.error("post: ", err);
-        });
+            console.error("post: ", err)
+        })
     }
 
     render() {
@@ -59,6 +60,10 @@ class AddCategory extends Component {
             </>
         )
     }
+}
+
+AddCategory.propTypes = {
+    addCategory: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => {

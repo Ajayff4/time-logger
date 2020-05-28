@@ -3,14 +3,14 @@ import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { addLog } from '../actions'
-
+import PropTypes from 'prop-types'
 /*
 Have to work on log duration
 */
 
 class AddLog extends Component {
     constructor(props) {
-        super(props);
+        super(props)
         this.state = {
             tag: "",
             category: "--",
@@ -26,22 +26,22 @@ class AddLog extends Component {
             axios.get("/tags")
                 .then(res => {
                     console.log("tags fetched")
-                    this.setState({ tags: { ...res.data } });
+                    this.setState({ tags: { ...res.data } })
                 }).catch(err => {
-                    console.error("post cat: ", err);
-                });
+                    console.error("post cat: ", err)
+                })
         }
     }
 
     onChange = (e) => {
-        this.setState({ [e.target.name]: e.target.value });
+        this.setState({ [e.target.name]: e.target.value })
     }
 
     onSubmit = (e) => {
-        e.preventDefault();
-        const { tag, category, date_time, duration, log_details } = this.state;
+        e.preventDefault()
+        const { tag, category, date_time, duration, log_details } = this.state
 
-        this.setState({ date_time: new Date() });
+        this.setState({ date_time: new Date() })
 
         axios.post('/add-log', {
             tag: tag,
@@ -50,16 +50,16 @@ class AddLog extends Component {
             duration: duration,
             log_details: log_details
         }).then(res => {
-            console.log(res.status);
-            this.props.addLog();
-            this.props.history.push('/logs');
+            console.log(res.status)
+            this.props.addLog()
+            this.props.history.push('/logs')
         }).catch(err => {
-            console.error("post: ", err);
-        });
+            console.error("post: ", err)
+        })
     }
 
     createTag = () => {
-        this.props.history.push("/add-tag");
+        this.props.history.push("/add-tag")
     }
 
     render() {
@@ -77,7 +77,7 @@ class AddLog extends Component {
                                 <option key="choose" value="--">Choose tag</option>
                                 {
                                     Object.entries(this.state.tags).map((tag) => {
-                                        tag = tag[1]["tag"];
+                                        tag = tag[1]["tag"]
                                         return <option key={tag} value={tag}>{tag}</option>
                                     })
                                 }
@@ -99,6 +99,10 @@ class AddLog extends Component {
             </>
         )
     }
+}
+
+AddLog.propTypes = {
+    addLog: PropTypes.func.isRequired
 }
 
 const mapDispatchToProps = dispatch => {

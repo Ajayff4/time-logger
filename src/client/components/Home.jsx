@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Login from './Login';
-import Logs from './Logs';
-import AddTag from './AddTag';
-import Profile from './Profile';
-import AddLog from './AddLog';
-import Signup from './Signup';
-import AddCategory from './AddCategory';
-import { logout } from '../actions';
-import { connect } from 'react-redux';
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import Login from './Login'
+import Logs from './Logs'
+import AddTag from './AddTag'
+import Profile from './Profile'
+import AddLog from './AddLog'
+import Signup from './Signup'
+import AddCategory from './AddCategory'
+import { logout } from '../actions'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 class Home extends Component {
     // eslint-disable-next-line
     constructor(props) {
-        super(props);
+        super(props)
     }
     handleLogout = () => {
-        this.props.logout();
+        this.props.logout()
     }
     render() {
         return (
@@ -45,7 +46,11 @@ class Home extends Component {
             </nav>
         )
     }
-};
+}
+
+Home.propTypes = {
+    logout: PropTypes.func.isRequired
+}
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -53,4 +58,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Home);
+export default connect(null, mapDispatchToProps)(Home)
