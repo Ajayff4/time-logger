@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import sha256 from 'sha256';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { login } from '../actions'
 
 class Login extends Component {
 
-    state = {
-        username: "",
-        password: ""
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: "",
+            password: "",
+            user: {}
+        }
     }
 
     onChange = (e) => {
@@ -21,10 +27,12 @@ class Login extends Component {
             username: username,
             password: sha256(password)
         }).then(res => {
-            console.log("response: ", res.data);
+            this.setState({ user: res.data })
+            const { username, password, fullname, email } = this.state.user
+            this.props.login(username, password, fullname, email);
             this.props.history.push('/logs');
         }).catch(err => {
-            console.error("post: ", err);
+            console.error("Error in fetching login data: ", err);
         });
     }
 
@@ -62,4 +70,10 @@ class Login extends Component {
     }
 }
 
-export default withRouter(Login);
+const mapDispatchToProps = dispatch => {
+    return {
+        login: (username, password, fullname, email) => dispatch(login(username, password, fullname, email))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(withRouter(Login));

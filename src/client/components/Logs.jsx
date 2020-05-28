@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import { getAllLogs } from '../actions'
+import { connect } from 'react-redux';
 
 class Logs extends Component {
-    state = {
-        logs: []
+    constructor(props) {
+        super(props);
+        this.state = {
+            logs: []
+        }
     }
-
+    //no-useless-constructor
     componentDidMount() {
         axios.get('/logs')
             .then(res => {
                 this.setState({ logs: [...res.data] });
+                this.props.getAllLogs([...res.data]);
             }).catch(err => {
                 console.log("Error in fetching logs", err);
             })
@@ -17,7 +23,6 @@ class Logs extends Component {
 
     render() {
         console.log("logs: ", this.state.logs);
-
         let tableData = [];
         tableData.push(<tr key={"header"}><td>Id</td><td>Tag</td><td>Category</td><td>Date&Time</td><td>Duration</td><td>Log Details</td><td>Opeartions</td></tr>);
 
@@ -48,4 +53,10 @@ class Logs extends Component {
     }
 }
 
-export default Logs;
+const mapDispatchToProps = dispatch => {
+    return {
+        getAllLogs: (logs) => dispatch(getAllLogs(logs))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Logs);

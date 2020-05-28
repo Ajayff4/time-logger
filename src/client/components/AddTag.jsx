@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
+import AddLog from './AddLog';
+import { connect } from 'react-redux';
+import { addTag } from '../actions'
 
 class AddTag extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -41,7 +43,7 @@ class AddTag extends Component {
             category: category
         }).then(res => {
             console.log(res.status);
-            alert("ok");
+            this.props.addTag();
             this.props.history.push('/add-log');
         }).catch(err => {
             console.error("post: ", err);
@@ -72,7 +74,7 @@ class AddTag extends Component {
                                 value={this.state.category}
                                 onChange={this.onChange}
                             >
-                                <option key="choose" value="--">Choose tag</option>
+                                <option key="choose" value="--">Choose category</option>
                                 {
                                     Object.entries(this.state.categories).map((category) => {
                                         category = category[1]["category"];
@@ -96,4 +98,10 @@ class AddTag extends Component {
     }
 }
 
-export default withRouter(AddTag);
+const mapDispatchToProps = dispatch => {
+    return {
+        addTag: () => dispatch(addTag())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(withRouter(AddTag));

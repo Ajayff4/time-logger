@@ -1,4 +1,4 @@
-const ACTION = {
+const ACTIONS = {
     ADD_LOG: "ADD_LOG",
     ADD_TAG: "ADD_TAG",
     ADD_CATEGORY: "ADD_CATEGORY",
@@ -6,9 +6,8 @@ const ACTION = {
     LOGOUT: "LOGOUT",
     SIGNUP: "SIGNUP",
     PROFILE_LOAD: "PROFILE_LOAD",
-    ERROR: "ERROR"
+    ERROR: "ERROR",
+    GET_ALL_LOGS: "GET_ALL_LOGS"
 }
 
-export {
-    ACTION
-};
+export { ACTIONS };

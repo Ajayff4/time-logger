@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import sha256 from 'sha256';
+import { signup } from '../actions';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types'
 
 class Signup extends Component {
-
     state = {
         username: "",
         fullname: "",
@@ -28,7 +31,8 @@ class Signup extends Component {
             }).then(res => {
                 console.log(res.status);
                 alert("ok");
-                this.props.history.push('/add-log');
+                this.props.signup();
+                this.props.history.push('/login');
             }).catch(err => {
                 console.error("post: ", err);
             });
@@ -96,4 +100,14 @@ class Signup extends Component {
     }
 }
 
-export default Signup;
+Signup.propTypes = {
+    signup: PropTypes.func.isRequired
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        signup: () => dispatch(signup())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(withRouter(Signup));

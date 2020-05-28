@@ -7,18 +7,17 @@ import Profile from './Profile';
 import AddLog from './AddLog';
 import Signup from './Signup';
 import AddCategory from './AddCategory';
+import { logout } from '../actions';
+import { connect } from 'react-redux';
 
 class Home extends Component {
-    // handleErrors = (err) => {
-    //     if (err.response) {
-    //         console.log("Problem with response: ", err.response);
-    //     } else if (err.request) {
-    //         console.log("Problem with request: ", err.request);
-    //     } else {
-    //         console.log("Error: ", err.message);
-    //     }
-    // }
-
+    // eslint-disable-next-line
+    constructor(props) {
+        super(props);
+    }
+    handleLogout = () => {
+        this.props.logout();
+    }
     render() {
         return (
             <nav id="menu-bar">
@@ -29,7 +28,7 @@ class Home extends Component {
                         <li key="logs"><Link to="/logs"><button>Logs</button></Link></li>
                         <li key="profile"><Link to="/profile"><button>Profile</button></Link></li>
                         <li key="signup"><Link to="/signup"><button>Signup</button></Link></li>
-                        <li><button>Logout</button></li>
+                        <li><button onClick={this.handleLogout}>Logout</button></li>
                     </ul>
                     {
                         <Switch>
@@ -48,4 +47,10 @@ class Home extends Component {
     }
 };
 
-export default Home;
+const mapDispatchToProps = dispatch => {
+    return {
+        logout: () => dispatch(logout())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Home);

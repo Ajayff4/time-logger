@@ -227,3 +227,10 @@ app.post("/first-log", (req, res) => {
         }
     })
 });
+
+app.post('/hello', (req, res) => {
+    res.json = {
+        message: 'Working test'
+    }
+    res.sendStatus(200)
+})

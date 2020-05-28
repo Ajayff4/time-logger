@@ -1,19 +1,24 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
+import { connect } from 'react-redux'
+import { addLog } from '../actions'
 
 /*
 Have to work on log duration
 */
 
 class AddLog extends Component {
-    state = {
-        tag: "",
-        category: "--",
-        date_time: "",
-        duration: 0,
-        log_details: "",
-        tags: {}
+    constructor(props) {
+        super(props);
+        this.state = {
+            tag: "",
+            category: "--",
+            date_time: "",
+            duration: 0,
+            log_details: "",
+            tags: {}
+        }
     }
 
     componentDidMount() {
@@ -36,17 +41,7 @@ class AddLog extends Component {
         e.preventDefault();
         const { tag, category, date_time, duration, log_details } = this.state;
 
-        // axios.post('/get-category', {
-        //     tag: tag
-        // }).then(res => {
-        //     console.log(res.data, "fetched");
-        //     this.setState({ category: res.data });
-        // }).catch(err => {
-        //     console.log("error: ", err);
-        // });
-
         this.setState({ date_time: new Date() });
-
 
         axios.post('/add-log', {
             tag: tag,
@@ -56,7 +51,7 @@ class AddLog extends Component {
             log_details: log_details
         }).then(res => {
             console.log(res.status);
-            alert("ok");
+            this.props.addLog();
             this.props.history.push('/logs');
         }).catch(err => {
             console.error("post: ", err);
@@ -106,4 +101,10 @@ class AddLog extends Component {
     }
 }
 
-export default withRouter(AddLog);
+const mapDispatchToProps = dispatch => {
+    return {
+        addLog: () => dispatch(addLog())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(withRouter(AddLog))

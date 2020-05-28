@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import axios from 'axios'
+import { addCategory } from '../actions';
+import { connect } from 'react-redux';
 
 class AddCategory extends Component {
     constructor() {
@@ -24,9 +26,8 @@ class AddCategory extends Component {
         axios.post('/add-category', {
             category: category
         }).then(res => {
-            console.log(res.data);
-            alert("ok");
-            this.props.history.push('/add-log');
+            this.props.addCategory()
+            this.props.history.push('/add-log')
         }).catch(err => {
             console.error("post: ", err);
         });
@@ -60,4 +61,10 @@ class AddCategory extends Component {
     }
 }
 
-export default withRouter(AddCategory);
+const mapDispatchToProps = dispatch => {
+    return {
+        addCategory: () => dispatch(addCategory())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(withRouter(AddCategory))
