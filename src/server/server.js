@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
-var con = mysql.createConnection({
+let con = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
@@ -186,7 +186,7 @@ app.post("/add-category", (req, res) => {
 
 app.post("/add-log", (req, res) => {
     console.log("inside add-log");
-    var data = {
+    let data = {
         id: null,
         tag: req.body.tag,
         date_time: new Date(),
@@ -227,6 +227,17 @@ app.post("/first-log", (req, res) => {
         }
     })
 });
+
+app.post("/deleteLog", (req, res) => {
+    let sql = "DELETE FROM logs WHERE id=" + "'" + req.body.delete + "'";
+    con.query(sql, function (err, resp) {
+        if (err) {
+            console.error("query error in log deleting");
+        } else {
+            console.log("deleted log successfully.");
+        }
+    })
+})
 
 app.post('/hello', (req, res) => {
     res.json = {

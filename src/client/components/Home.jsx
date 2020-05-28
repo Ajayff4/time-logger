@@ -23,25 +23,34 @@ class Home extends Component {
         return (
             <nav id="menu-bar">
                 <Router>
-                    <ul>
-                        <li key="login"><Link to="/login"><button>Login</button></Link></li>
-                        <li key="add-log"><Link to="/add-log"><button>Add Log</button></Link></li>
-                        <li key="logs"><Link to="/logs"><button>Logs</button></Link></li>
-                        <li key="profile"><Link to="/profile"><button>Profile</button></Link></li>
-                        <li key="signup"><Link to="/signup"><button>Signup</button></Link></li>
-                        <li><button onClick={this.handleLogout}>Logout</button></li>
-                    </ul>
-                    {
-                        <Switch>
-                            <Route path="/login"><Login /></Route>
-                            <Route path="/add-log"><AddLog /></Route>
-                            <Route path="/logs"><Logs /></Route>
-                            <Route path="/add-tag"><AddTag /></Route>
-                            <Route path="/add-category"><AddCategory /></Route>
-                            <Route path="/profile"><Profile /></Route>
-                            <Route path="/signup"><Signup /></Route>
-                        </Switch>
-                    }
+                    <center>
+                        <ul>
+                            {
+                                this.props.isUserLoggedIn ? (
+                                    <div>
+                                        <li key="add-log"><Link to="/add-log"><button>Add Log</button></Link></li>
+                                        <li key="logs"><Link to="/logs"><button>Logs</button></Link></li>
+                                        <li key="profile"><Link to="/profile"><button>Profile</button></Link></li>
+                                        <li><button onClick={this.handleLogout}>Logout</button></li>
+                                    </div>
+                                ) : (
+                                        <div>
+                                            <li key="login"><Link to="/login"><button>Login</button></Link></li>
+                                            <li key="signup"><Link to="/signup"><button>Signup</button></Link></li>
+                                        </div>
+                                    )
+                            }
+                        </ul>
+                    </center>
+                    <Switch>
+                        <Route path="/login"><Login /></Route>
+                        <Route path="/add-log"><AddLog /></Route>
+                        <Route path="/logs"><Logs /></Route>
+                        <Route path="/add-tag"><AddTag /></Route>
+                        <Route path="/add-category"><AddCategory /></Route>
+                        <Route path="/profile"><Profile /></Route>
+                        <Route path="/signup"><Signup /></Route>
+                    </Switch>
                 </Router>
             </nav>
         )
@@ -49,7 +58,14 @@ class Home extends Component {
 }
 
 Home.propTypes = {
+    isUserLoggedIn: PropTypes.bool.isRequired,
     logout: PropTypes.func.isRequired
+}
+
+const mapStateToProps = state => {
+    return {
+        isUserLoggedIn: state.user.loggedIn
+    }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -58,4 +74,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(null, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

@@ -11,7 +11,7 @@ const Profile = (props) => {
         <div>
             <h2>Profile Component</h2>
             <h3>Username: {props.username}</h3>
-            <h3>Entries made: {props.logsCount}</h3>
+            <h3>Entries made: {props.logs ? props.logs.length : 0}</h3>
         </div>
     )
 }
@@ -25,7 +25,7 @@ Profile.propTypes = {
 const mapStateToProps = state => {
     return {
         username: state.user.username,
-        logsCount: state.log.logs.length
+        logs: state.log.logs
     }
 }
 

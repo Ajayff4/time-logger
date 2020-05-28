@@ -20,6 +20,34 @@ const historyReducer = (state = initialState, action) => {
                 message: 'Getting all logs'
             }]
         }
+        case ACTIONS.ADD_CATEGORY: return {
+            ...state,
+            logs: [...state.logs, {
+                action: ACTIONS.ADD_CATEGORY,
+                message: 'Added category'
+            }]
+        }
+        case ACTIONS.ADD_TAG: return {
+            ...state,
+            logs: [...state.logs, {
+                action: ACTIONS.ADD_TAG,
+                message: 'Added tag'
+            }]
+        }
+        case ACTIONS.ADD_LOG: return {
+            ...state,
+            logs: [...state.logs, {
+                action: ACTIONS.ADD_LOG,
+                message: 'Added log'
+            }]
+        }
+        case ACTIONS.PROFILE_LOAD: return {
+            ...state,
+            logs: [...state.logs, {
+                action: ACTIONS.PROFILE_LOAD,
+                message: 'User profile loaded'
+            }]
+        }
         case ACTIONS.LOGOUT: return {
             logs: [{
                 action: ACTIONS.LOGOUT,

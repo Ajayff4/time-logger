@@ -6,7 +6,7 @@ import historyReducer from './historyReducer';
 const rootReducer = combineReducers({
     user: userReducer,
     log: logReducer,
-    history: historyReducer
+    historyLog: historyReducer
 })
 
 export default rootReducer;

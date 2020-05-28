@@ -22,6 +22,15 @@ class Logs extends Component {
             })
     }
 
+    handleDeleteLog = () => {
+        axios.post('/deleteLog', { id: 6 })
+            .then(res => {
+                console.log('trigger')
+            }).catch(err => {
+                console.log("Error in deleting logs", err)
+            })
+    }
+
     render() {
         console.log("logs: ", this.state.logs)
         let tableData = []
@@ -33,7 +42,7 @@ class Logs extends Component {
             for (let field in log) {
                 row.push(<td key={field + log[field]}>{log[field]}</td>)
             }
-            row.push(<td key={i + "edit-delete"}><button id="editButton">Edit</button><button id="deleteButton">Delete</button></td>)
+            row.push(<td key={i + "edit-delete"}><button id="editButton">Edit</button><button id="deleteButton" name="delete" onClick={() => this.handleDeleteLog}>Delete</button></td>)
             tableData.push(<tr key={i + row}>{row}</tr >)
         })
 
