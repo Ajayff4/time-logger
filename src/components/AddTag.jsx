@@ -31,7 +31,7 @@ class AddTag extends Component {
                 this.setState({ categories: [...res.data] })
 
             }).catch(err => {
-                console.log("Error in fetching logs", err)
+                console.log("Error in fetching logs")
             })
         }
     }
@@ -51,7 +51,7 @@ class AddTag extends Component {
                 this.props.addTag()
                 this.props.history.push('/add-log')
             }).catch(err => {
-                this.props.failedToFetchData(err)
+                this.props.failedToFetchData("Error in adding tag")
             })
     }
 

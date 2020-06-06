@@ -37,7 +37,7 @@ class AddCategory extends Component {
             this.props.addCategory()
             this.props.history.push('/add-tag')
         }).catch(err => {
-            this.props.failedToFetchData("Error in add category" + err);
+            this.props.failedToFetchData("Error in add category");
         })
     }
 

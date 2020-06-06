@@ -42,7 +42,7 @@ class Signup extends Component {
                 this.props.signup()
                 this.props.history.push('/login')
             }).catch(err => {
-                console.log("Error in fetching logs", err)
+                console.log("Error in signup")
             })
         }
     }

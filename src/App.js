@@ -14,7 +14,7 @@ function App() {
         <div className="App">
           <Header />
           <HomePage />
-          <Footer />
+          <Footer/>
         </div>
       </Router>
     </Provider>

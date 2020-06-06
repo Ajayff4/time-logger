@@ -20,11 +20,11 @@ class Logs extends Component {
     fetchAllLogs = () => {
         axios.get("http://localhost:5000/rest/logs")
         .then(res => {
-            this.setState({logs: res.data})
+            this.setState({logs: res.data.filter((log) => { return this.props.username===log.username})})
             this.props.actions.getAllLogs(res.data)
         })
         .catch(err => {
-            this.props.failedToFetchData(err);
+            this.props.failedToFetchData("Error in fetching logs");
         })
     }
 
@@ -33,8 +33,13 @@ class Logs extends Component {
     }
 
     handleCompletedLog = (logId) => {
-        let buttonArray = document.getElementById('operations').childElementCount;
-        console.log("btn: ", buttonArray);
+        axios.put(`http://localhost:5000/rest/logs/${logId}`)
+        .then(res=> {
+            alert("log completed" + logId)
+            this.fetchAllLogs();
+        }).catch(err => {
+            console.log("Error in completing log" + err)
+        })
     }
 
     handleDeleteLog = (logId) => {
@@ -60,8 +65,10 @@ class Logs extends Component {
         tableData.push(
             <tr key={"header"}>
                 <td>Id</td>
+                <td>User</td>
                 <td>Tag</td>
-                <td>Date&Time</td>
+                <td>Date</td>
+                <td>Time</td>
                 <td>Duration</td>
                 <td>Log Details</td>
                 <td>Opeartions</td>
@@ -75,14 +82,12 @@ class Logs extends Component {
             let isCompleted = false;
             console.log(typeof log)
             for (let field in log) {
-                //if(field==="username" && this.props.username!==log[field]){ continue; }
                 if(field==="id"){ logId = log[field] }
-                if(field==="completed" && log[field]===1){ isCompleted=true }
-                row.push(<td key={field + log[field]}>{log[field]}</td>)
+                if(field!=="completed")row.push(<td key={field + log[field]}>{log[field]}</td>)
             }
             row.push(
                 <td key={i} id={"operations"}> 
-                    <button id="completedButton" disabled={!isCompleted} style={isCompleted? { color:'gray'}:{ color:'white' }} name="completed" onClick={() => {this.handleCompletedLog(logId)}}>
+                    <button id="completedButton" style={isCompleted? { color:'gray'}:{ color:'white' }} name="completed" onClick={() => {this.handleCompletedLog(logId)}}>
                         Completed
                     </button>
                     <button id="deleteButton" name="delete" onClick={() => this.handleDeleteLog(logId)}>

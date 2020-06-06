@@ -19,7 +19,8 @@ class AddLog extends Component {
         super(props)
         this.state = {
             tag: "--",
-            date_time: "",
+            date: "",
+            time: "",
             duration: 0,
             log_details: "",
             tags: []
@@ -31,15 +32,15 @@ class AddLog extends Component {
     }
 
     onSubmit = (e) => {
-        let curTime = new Date()
-        console.log("time: ",curTime)
+        let curDate = new Date().toISOString().split('T')[0].toString();
+        console.log("time: ",curDate)
         e.preventDefault()
         const {tag, duration, log_details } = this.state 
         //Adding new log
         axios.post('http://localhost:5000/rest/logs', {
             username: this.props.username,
             tag: tag,
-            date_time: curTime,
+            date: curDate,
             duration: duration,
             completed: false,
             log_details: log_details
@@ -53,7 +54,7 @@ class AddLog extends Component {
             }
             this.props.history.push('/logs')
         }).catch(err => {
-            this.props.failedToFetchData("Error in adding log "+err)
+            this.props.failedToFetchData("Error in adding log ")
         })
         
     }
@@ -70,13 +71,12 @@ class AddLog extends Component {
                         if(key==="tag"){
                             tagArray.push(tagCatObj[key])
                         }
-                    }
-                    
+                    } 
                 })
                 this.setState({tags: [...tagArray]})
             }
         }).catch(err => {
-            this.props.failedToFetchData(err);
+            this.props.failedToFetchData("Error in fetching all tags");
         })
 
 
