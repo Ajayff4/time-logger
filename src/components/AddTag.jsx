@@ -51,7 +51,7 @@ class AddTag extends Component {
                 this.props.addTag()
                 this.props.history.push('/add-log')
             }).catch(err => {
-                this.props.failedToFetchData("Error in adding tag")
+                this.props.failedToFetchData(`${err}`);
             })
     }
 

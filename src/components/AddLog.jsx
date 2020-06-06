@@ -54,7 +54,7 @@ class AddLog extends Component {
             }
             this.props.history.push('/logs')
         }).catch(err => {
-            this.props.failedToFetchData("Error in adding log ")
+            this.props.failedToFetchData(`${err}`);
         })
         
     }
@@ -76,7 +76,7 @@ class AddLog extends Component {
                 this.setState({tags: [...tagArray]})
             }
         }).catch(err => {
-            this.props.failedToFetchData("Error in fetching all tags");
+            this.props.failedToFetchData(`${err}`);
         })
 
 

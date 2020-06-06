@@ -1,6 +1,7 @@
 .homePageText {
   width: 60%;
   text-align: center;
+  background-color: rgba(88, 88, 88, 0.5);
 }
 
 #titleText{
@@ -52,18 +53,37 @@ textarea::placeholder {
   padding-left: 5px;
 }
 
-/* #completedButton {
+#completedButton:hover {
+  background-color: rgba(65, 105, 225, 0.5);
+  border-radius: 5px 0px 0px 5px;
+  width: 90px;
+  box-shadow: none;
+  height: 40px;
+  color: black;
+  padding-left: 5px;
+}
+
+#completedButtonOk {
   background-color: #00D477;
   width: 90px;
-  border-radius: 0px 0px 0px 0px;
+  border-radius: 5px 0px 0px 5px;
   box-shadow: none;
   height: 40px;
   padding-left: 5px;
   color: black;
-} */
+}
 
 #deleteButton {
   background-color: #E75B65;
+  width: 60px;
+  border-radius: 0px 5px 5px 0px;
+  box-shadow: none;
+  height: 40px;
+  color: black;
+}
+
+#deleteButton:hover {
+  background-color: rgba(231 , 91, 101, 0.5);
   width: 60px;
   border-radius: 0px 5px 5px 0px;
   box-shadow: none;

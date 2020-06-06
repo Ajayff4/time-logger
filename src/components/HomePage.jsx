@@ -16,6 +16,10 @@ import Home from './Home'
 class HomePage extends Component {
     static propTypes = {
         isUserLoggedIn: PropTypes.bool.isRequired,
+        username: PropTypes.string,
+        fullname: PropTypes.string,
+        email: PropTypes.string,
+        logs: PropTypes.array,
         logout: PropTypes.func.isRequired
     }
 
@@ -51,7 +55,9 @@ class HomePage extends Component {
                         <Route path="/add-log"><AddLog /></Route>
                         <Route path="/add-tag">{this.props.isUserLoggedIn?<AddTag />:<PageNotFound />}</Route>
                         <Route path="/add-category">{this.props.isUserLoggedIn?<AddCategory />:<PageNotFound />}</Route>
-                        <Route path="/profile">{this.props.isUserLoggedIn?<Profile />:<PageNotFound />}</Route>
+                        <Route path="/profile">{this.props.isUserLoggedIn?
+                            <Profile username={this.props.username} fullname={this.props.fullname} email={this.props.email} logs={this.props.logs} />:<PageNotFound />}
+                        </Route>
                         <Route path="/login"><Login /></Route>
                         <Route path="/signup"><Signup /></Route>
                     </Switch>
@@ -63,7 +69,11 @@ class HomePage extends Component {
 
 const mapStateToProps = state => {
     return {
-        isUserLoggedIn: state.user.loggedIn
+        isUserLoggedIn: state.user.loggedIn,
+        username: state.user.username,
+        fullname: state.user.fullname,
+        email: state.user.email,
+        logs: state.log.logs
     }
 }
 

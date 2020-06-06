@@ -150,3 +150,21 @@ export const getAllCategory = () => {
         type: ACTIONS.GET_ALL_CATEGORY
     }
 }
+
+export const deletedLog = () => {
+    return {
+        type: ACTIONS.DELETED_LOG
+    }
+}
+
+export const completedLog = () => {
+    return {
+        type: ACTIONS.COMPLETED_LOG
+    }
+}
+
+export const setCookie = () => {
+    return {
+        type: ACTIONS.SET_COOKIE
+    }
+}

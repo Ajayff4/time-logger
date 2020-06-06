@@ -32,10 +32,11 @@ class Login extends Component {
         }).then(res => {
             this.setState({ user: res.data })
             this.props.setUserData(res.data.username, res.data.fullname, res.data.email)
+            this.props.setCookie()
             this.props.history.push('/logs')
         }).catch(err => {
             console.log("login", err)
-            this.props.failedToFetchData("Error in logging in")
+            this.props.failedToFetchData(`${err}`);
         })
     }
 
@@ -81,8 +82,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        setCookie: () => dispatch(actions.setCookie()),
         failedToFetchData: (error) => dispatch(actions.failedToFetchData(error)),
-        setUserData: (username, password) => dispatch(actions.setUserData(username, password))
+        setUserData: (username, fullname, email) => dispatch(actions.setUserData(username, fullname, email))
     }
 }
 
