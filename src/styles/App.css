@@ -1,0 +1,169 @@
+.homePageText {
+  width: 60%;
+  text-align: center;
+}
+
+#titleText{
+  text-align: center;
+}
+
+.header {
+  background-color: royalblue;
+  color: black;
+  text-align: center;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: royalblue;
+  color: black;
+  text-align: center;
+}
+
+#form-css * {
+  width: 40%;
+}
+
+#form-css {
+  padding-top: 30px;
+  padding: 20px;
+}
+
+#add-log-dropdown,
+#add-log-submit,
+#add-log-details {
+  width: 40%;
+}
+
+textarea::placeholder {
+  color: white;
+}
+
+#completedButton {
+  background-color: royalblue;
+  border-radius: 5px 0px 0px 5px;
+  width: 90px;
+  box-shadow: none;
+  height: 40px;
+  color: black;
+  padding-left: 5px;
+}
+
+/* #completedButton {
+  background-color: #00D477;
+  width: 90px;
+  border-radius: 0px 0px 0px 0px;
+  box-shadow: none;
+  height: 40px;
+  padding-left: 5px;
+  color: black;
+} */
+
+#deleteButton {
+  background-color: #E75B65;
+  width: 60px;
+  border-radius: 0px 5px 5px 0px;
+  box-shadow: none;
+  height: 40px;
+  color: black;
+}
+
+#menu-bar {
+  position: relative;
+  text-align: center;
+}
+
+select,
+textarea {
+  color: royalblue;
+  background-color: black;
+  padding: 10px;
+}
+
+div>fieldset {
+  width: 30%;
+}
+
+fieldset {
+  border-radius: 5px;
+  border: 2px;
+  border-color: black;
+}
+
+input[type=text],
+input[type=password],
+input[type=email] {
+  margin: 5px;
+  background-color: black;
+  color: royalblue;
+  padding: 5px;
+  width: 70%;
+  border: none;
+  box-shadow: 5px 8px 8px #888888;
+}
+
+input[type=text]:hover,
+input[type=email]:hover,
+input[type=password]:hover {
+  background-color: black;
+  color: royalblue;
+}
+
+input[type=text]::placeholder,
+input[type=email]::placeholder,
+input[type=password]::placeholder {
+  color: white;
+}
+
+input[type=submit] {
+  border-radius: 5px;
+  color: royalblue;
+  background-color: black;
+  border: none;
+  padding: 10px;
+  width: 100px;
+  box-shadow: 5px 8px 8px #888888;
+}
+
+ul li {
+  text-decoration: none;
+  display: inline;
+  text-align: center;
+}
+
+ul>li:hover {
+  transition: 2s;
+  color: black;
+  background-color: royalblue;
+}
+
+button {
+  border-radius: 2px;
+  color: royalblue;
+  background-color: black;
+  border: none;
+  padding: 10px;
+  width: 100px;
+  box-shadow: 5px 8px 8px #888888;
+}
+
+button:hover,
+input[type=submit]:hover {
+  background-color: royalblue;
+  color: black;
+  transition: 1.0s;
+}
+
+#logout {
+  justify-items: right;
+}
+
+
+legend.scheduler-border {
+  width: inherit;
+  padding: 0 10px;
+  border-bottom: none;
+}
