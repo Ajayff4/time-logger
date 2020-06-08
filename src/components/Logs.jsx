@@ -76,7 +76,7 @@ class Logs extends Component {
                 <td>Opeartions</td>
             </tr>
         )
-
+        console.log(this.state.logs)
         // eslint-disable-next-line
         this.state.logs.map((log, i) => {
             let row = []
@@ -102,16 +102,22 @@ class Logs extends Component {
 
         return (
             <>
+            <div id="container">
                 <h2>Logs Component</h2>
                 <center>
-                    <div className="container">
-                        <table className="table table-dark table-striped">
-                            <tbody>
-                                {tableData}
-                            </tbody>
-                        </table>
+                    <div id="table-wrapper">
+                        <div id="table-scroll">
+                            <div className="container">
+                                <table className="table table-dark table-striped">
+                                    <tbody>
+                                        {tableData}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </center>
+            </div>
             </>
         )
     }

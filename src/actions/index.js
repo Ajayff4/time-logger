@@ -168,3 +168,9 @@ export const setCookie = () => {
         type: ACTIONS.SET_COOKIE
     }
 }
+
+export const unsetCookie = () => {
+    return {
+        type: ACTIONS.UNSET_COOKIE,
+    }
+}

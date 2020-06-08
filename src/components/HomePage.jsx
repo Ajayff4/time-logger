@@ -20,20 +20,23 @@ class HomePage extends Component {
         fullname: PropTypes.string,
         email: PropTypes.string,
         logs: PropTypes.array,
-        logout: PropTypes.func.isRequired
+        logout: PropTypes.func.isRequired,
+        unsetCookie: PropTypes.func.isRequired
     }
 
     handleLogout = () => {
+        this.props.unsetCookie()
         this.props.logout()
         this.props.history.push('/home')
     }
     render() {
+        let cookieVerify = document.cookie.length;
         return (
             <div className="homeComponent">
             <nav id="menu-bar">
                     <center>
                         <ul>
-                            {this.props.isUserLoggedIn ? (
+                            {cookieVerify? (
                                 <div>
                                     <li key="add-log"><Link to="/add-log"><button>Add Log</button></Link></li>
                                     <li key="logs"><Link to="/logs"><button>Logs</button></Link></li>
@@ -50,12 +53,13 @@ class HomePage extends Component {
                         </ul>
                     </center>
                     <Switch>
-                        <Route path="/home" exact ><Home /></Route>
-                        <Route path="/logs">{this.props.isUserLoggedIn?<Logs />:<PageNotFound />}</Route>
+                        <Route path="/" exact ><Home /></Route>
+                        <Route path="/home" ><Home /></Route>
+                        <Route path="/logs">{cookieVerify?<Logs />:<PageNotFound />}</Route>
                         <Route path="/add-log"><AddLog /></Route>
-                        <Route path="/add-tag">{this.props.isUserLoggedIn?<AddTag />:<PageNotFound />}</Route>
-                        <Route path="/add-category">{this.props.isUserLoggedIn?<AddCategory />:<PageNotFound />}</Route>
-                        <Route path="/profile">{this.props.isUserLoggedIn?
+                        <Route path="/add-tag">{cookieVerify?<AddTag />:<PageNotFound />}</Route>
+                        <Route path="/add-category">{cookieVerify?<AddCategory />:<PageNotFound />}</Route>
+                        <Route path="/profile">{cookieVerify?
                             <Profile username={this.props.username} fullname={this.props.fullname} email={this.props.email} logs={this.props.logs} />:<PageNotFound />}
                         </Route>
                         <Route path="/login"><Login /></Route>
@@ -79,7 +83,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        logout: () => dispatch(actions.logout()),
+        unsetCookie: () => dispatch(actions.unsetCookie()),
+        logout: () => dispatch(actions.logout())
     }
 }
 

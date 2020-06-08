@@ -53,7 +53,7 @@ class Signup extends Component {
                 <div>
                     <fieldset>
                         <legend>Signup</legend>
-                        <form method="POST" onSubmit={this.onSubmit}>
+                        <form method="POST" onSubmit={this.onSubmit} autoComplete="off">
                             <input
                                 type="text"
                                 name="username"
@@ -71,6 +71,7 @@ class Signup extends Component {
                                 value={this.state.fullname}
                                 onChange={this.onChange}
                                 required
+                                autoComplete="off"
                             /><br />
                             <input
                                 type="email"
@@ -80,6 +81,7 @@ class Signup extends Component {
                                 value={this.state.email}
                                 onChange={this.onChange}
                                 required
+                                autoComplete="off"
                             /><br />
                             <input
                                 type="password"

@@ -30,10 +30,10 @@ class Login extends Component {
             username: username,
             password: password
         }).then(res => {
-            this.setState({ user: res.data })
             this.props.setUserData(res.data.username, res.data.fullname, res.data.email)
-            this.props.setCookie()
+            this.props.setCookie();
             this.props.history.push('/logs')
+            console.log(username, document.cookie.username, username===document.cookie.username)
         }).catch(err => {
             console.log("login", err)
             this.props.failedToFetchData(`${err}`);
@@ -46,7 +46,7 @@ class Login extends Component {
                 <div>
                     <fieldset>
                         <legend>Login</legend>
-                        <form method="POST" onSubmit={this.onSubmit}>
+                        <form method="POST" onSubmit={this.onSubmit} autoComplete="off">
                             <input
                                 type="text"
                                 name="username"
