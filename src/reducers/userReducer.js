@@ -20,11 +20,7 @@ const userReducer = (state = initialState, action) => {
         case ACTIONS.FAILED_TO_FETCH_DATA: return {
             ...state,
             error: action.payload.error
-        }
-        case ACTIONS.AUTH_FAIL: return {
-            ...state,
-            error: "unable to login"
-        }
+        }  
         case ACTIONS.AUTH_INITIATE_LOGOUT: return {
             loggedIn: false
         }

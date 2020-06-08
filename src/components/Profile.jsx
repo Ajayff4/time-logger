@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 export default class Profile extends Component {
+    static propTypes = {
+        username: PropTypes.string.isRequired,
+        fullname: PropTypes.string.isRequired,
+        email: PropTypes.string.isRequired,
+        logs: PropTypes.array.isRequired
+    }
     render() {
         let completed = 0
         let pending = 0
@@ -60,6 +67,5 @@ export default class Profile extends Component {
                 </center>
             </div>        
         )
-
     }
 }

@@ -1,3 +1,5 @@
+import checkPropTypes from 'check-prop-types'
+
 export const findByTestAtrr = (component, attr) => {
     let wrapper = undefined;
     if(attr[0]==='.' || attr[0]==='#'){
@@ -7,3 +9,8 @@ export const findByTestAtrr = (component, attr) => {
     }
     return wrapper;
 };
+
+export const checkProps = (component, expectedProps) => {
+    const propsErr = checkPropTypes(component.propTypes, expectedProps, 'props', component.name);
+    return propsErr;
+}

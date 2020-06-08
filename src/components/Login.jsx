@@ -25,6 +25,7 @@ class Login extends Component {
 
     onSubmit = (e) => {
         e.preventDefault()
+        this.props.authStart();
         const {username, password} = this.state;
         axios.post("http://localhost:5000/rest/users/login", {
             username: username,
@@ -82,6 +83,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        authStart: () => dispatch(actions.authStart()),
         setCookie: () => dispatch(actions.setCookie()),
         failedToFetchData: (error) => dispatch(actions.failedToFetchData(error)),
         setUserData: (username, fullname, email) => dispatch(actions.setUserData(username, fullname, email))

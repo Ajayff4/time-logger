@@ -15,7 +15,6 @@ describe('Footer Component', () => {
         component = setUp();
     })
 
-    //it fails
     it('should render without errors', () => {
         const wrapper = findByTestAtrr(component, '#footerComponent');
         expect(wrapper.length).toBe(1);

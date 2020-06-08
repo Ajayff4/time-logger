@@ -49,36 +49,6 @@ export const profileLoad = () => {
     }
 } 
 
-export const getEditLogId = (logId) => {
-    return {
-        type: ACTIONS.GET_EDIT_LOG_ID,
-        payload: {
-            editLogId: logId
-        }
-    }
-}
-
-export const setEditLogFlag = () => {
-    return {
-        type: ACTIONS.SET_EDIT_LOG_FLAG
-    }
-}
-
-export const unsetEditLogFlag = () => {
-    return {
-        type: ACTIONS.UNSET_EDIT_LOG_FLAG
-    }
-}
-
-export const setEditLogId = logId => {
-    return {
-        type: ACTIONS.SET_EDIT_LOG_ID,
-        payload: {
-            editLogId: logId 
-        }
-    }
-}
-
 export const authStart = () => {
     return {
         type: ACTIONS.AUTH_START
@@ -91,15 +61,6 @@ export const authSuccess = (token, username) => {
         payload: {
             token: token,
             username: username
-        }
-    }
-}
-
-export const authFail = (error) => {
-    return {
-        type: ACTIONS.AUTH_FAIL,
-        payload: {
-            error: error
         }
     }
 }

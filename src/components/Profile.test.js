@@ -1,7 +1,6 @@
 import React from 'react'
 import {shallow} from 'enzyme'
-import {findByTestAtrr} from '../../utils'
-import {logs} from '../../utils/testMockData'
+import {findByTestAtrr, checkProps} from '../../utils'
 import Profile from './Profile';
 
 const setUp = (props = {}) => {
@@ -11,46 +10,38 @@ const setUp = (props = {}) => {
 
 describe('Profile Component', () => {
 
-    describe('Have props', () => {
-        let wrapper;
-        beforeEach(() => {
-            const props = {
+    let wrapper;
+    beforeEach(() => {
+        const props = {
+            username: "ajayff4",
+            fullname: "Ajay Agrawal",
+            email: "ajayff4@gmail.com",
+            logs: []
+        };
+        wrapper = setUp(props);
+    });
+
+    describe('Checking PropTypes', () => {
+        it('should not throw a warning', () => {
+            const expectedProps = {
                 username: "ajayff4",
                 fullname: "Ajay Agrawal",
                 email: "ajayff4@gmail.com",
-                logs: logs
+                logs: []
             };
-            wrapper = setUp(props);
-        });
+            const propsErr = checkProps(Profile, expectedProps);
+            expect(propsErr).toBeUndefined();
+        })
+    })
 
-        it('should render without errors', () => {
-            const component = findByTestAtrr(wrapper, '#profileComponent');
-            expect(component.length).toBe(1);
-        });
+    it('should render without errors', () => {
+        const component = findByTestAtrr(wrapper, '#profileComponent');
+        expect(component.length).toBe(1);
     });
 
-    describe('Have no props', () => {
-        let wrapper;
-        beforeEach(() => {
-            wrapper = setUp();
-        });
-
-        it('should render without errors', () => {
-            const component = findByTestAtrr(wrapper, '#profileComponent');
-            expect(component.length).toBe(1);
-        });
+    it('should render without errors', () => {
+        const tr = wrapper.find('.container tr');
+        expect(tr.length).toBe(9);
     });
 
-
-
-    // it('should render without errors', () => {
-    //     const wrapper = findByTestAtrr(component, '#profileComponent');
-    //     expect(wrapper.length).toBe(1);
-    // });
-
-    // it('should render error404 text', () => {
-    //     const wrapper = findByTestAtrr(component, 'text404');
-    //     expect(wrapper.length).toBe(1);
-    // });
-
-})
+});
