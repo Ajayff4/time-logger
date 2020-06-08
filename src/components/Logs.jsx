@@ -44,7 +44,6 @@ class Logs extends Component {
     }
 
     handleDeleteLog = (logId) => {
-        console.log("delete: ", logId)
         axios.delete(`http://localhost:5000/rest/logs/${logId}`,
         {
             headers: {"Access-Control-Allow-Origin": "*"}
@@ -76,7 +75,6 @@ class Logs extends Component {
                 <td>Opeartions</td>
             </tr>
         )
-        console.log(this.state.logs)
         // eslint-disable-next-line
         this.state.logs.map((log, i) => {
             let row = []
@@ -105,6 +103,7 @@ class Logs extends Component {
             <div id="container">
                 <h2>Logs Component</h2>
                 <center>
+                    {this.state.logs!==undefined && this.state.logs.length>0 ?
                     <div id="table-wrapper">
                         <div id="table-scroll">
                             <div className="container">
@@ -116,6 +115,10 @@ class Logs extends Component {
                             </div>
                         </div>
                     </div>
+                    :
+                    <h3>No Logs were found</h3>
+                }
+                    
                 </center>
             </div>
             </>

@@ -1,28 +1,27 @@
 import React from 'react'
 import {shallow} from 'enzyme'
 import {findByTestAtrr} from '../../utils'
-import Footer from './Footer'
+import PageNotFound from './PageNotFound';
 
 const setUp = (props = {}) => {
-    const component = shallow(<Footer {...props} />);
+    const component = shallow(<PageNotFound {...props} />);
     return component;
 }
 
-describe('Footer Component', () => {
+describe('PageNotFound Component', () => {
 
     let component;
     beforeEach(() => {
         component = setUp();
     })
 
-    //it fails
     it('should render without errors', () => {
-        const wrapper = findByTestAtrr(component, '#footerComponent');
+        const wrapper = findByTestAtrr(component, '#errorPage404Component');
         expect(wrapper.length).toBe(1);
     });
 
-    it('should render footer text', () => {
-        const wrapper = findByTestAtrr(component, 'footerText');
+    it('should render error404 text', () => {
+        const wrapper = findByTestAtrr(component, 'text404');
         expect(wrapper.length).toBe(1);
     });
 

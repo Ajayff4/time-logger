@@ -33,7 +33,6 @@ class AddLog extends Component {
 
     onSubmit = (e) => {
         let curDate = new Date().toISOString().split('T')[0].toString();
-        console.log("time: ",curDate)
         e.preventDefault()
         const {tag, duration, log_details } = this.state 
         //Adding new log
