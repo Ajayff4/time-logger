@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomePage Snapshot Testing... renders component correctly 1`] = `
+<div
+  className="homeComponent"
+>
+  <nav
+    id="menu-bar"
+  >
+    <center>
+      <ul>
+        <div>
+          <li>
+            <a
+              href="/home"
+              onClick={[Function]}
+            >
+              <button>
+                Home
+              </button>
+            </a>
+          </li>
+          <li>
+            <a
+              href="/login"
+              onClick={[Function]}
+            >
+              <button>
+                Login
+              </button>
+            </a>
+          </li>
+          <li>
+            <a
+              href="/signup"
+              onClick={[Function]}
+            >
+              <button>
+                Signup
+              </button>
+            </a>
+          </li>
+        </div>
+      </ul>
+    </center>
+    <div
+      className="homeComponent"
+    >
+      <center>
+        <div
+          className="homePageText"
+        >
+          <h2>
+            This app is useful for managing time and also useful for self evaluation.
+          </h2>
+          <p>
+            Made By AA077457
+          </p>
+          <p>
+            Thank You!!!
+          </p>
+        </div>
+      </center>
+    </div>
+  </nav>
+</div>
+`;

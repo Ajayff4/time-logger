@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 
 export default class Profile extends Component {
     static propTypes = {
-        username: PropTypes.string.isRequired,
-        fullname: PropTypes.string.isRequired,
-        email: PropTypes.string.isRequired,
-        logs: PropTypes.array.isRequired
+        username: PropTypes.string,
+        fullname: PropTypes.string,
+        email: PropTypes.string,
+        logs: PropTypes.array
     }
     render() {
         let completed = 0
@@ -15,6 +15,7 @@ export default class Profile extends Component {
         let totalLogTime = 0
         if(this.props.logs!==undefined && this.props.logs.length>0){
             //eslint-disable-next-line
+
             this.props.logs.map(log => {
                 if(log.completed===1) completed++
                 else pending++

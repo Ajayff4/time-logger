@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function Header() {
     return (
-        <header data-test="headerComponent">
+        <header id="headerComponent">
             <div className="header" id="header">
                 <center>
-                    <h1 data-test="titleText" id="titleText">Time Logger App</h1>
+                    <h1 id="titleText">Time Logger App</h1>
                 </center>
             </div>  
         </header>      

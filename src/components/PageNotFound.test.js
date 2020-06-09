@@ -1,7 +1,7 @@
 import React from 'react'
 import {shallow} from 'enzyme'
 import {findByTestAtrr} from '../../utils'
-import PageNotFound from './PageNotFound';
+import PageNotFound from './PageNotFound'
 
 const setUp = (props = {}) => {
     const component = shallow(<PageNotFound {...props} />);
@@ -21,10 +21,8 @@ describe('PageNotFound Component', () => {
     });
 
     it('should render error404 text', () => {
-        const wrapper = findByTestAtrr(component, 'text404');
+        const wrapper = findByTestAtrr(component, '#text404');
         expect(wrapper.length).toBe(1);
     });
 
-})
-
-//console.log(component.debug());
+});

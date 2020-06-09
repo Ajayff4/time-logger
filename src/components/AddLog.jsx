@@ -90,7 +90,7 @@ class AddLog extends Component {
 
     render() {
         return (
-            <>
+            <div id="addLogComponent">
                 <center>
                     <h2>Add Log Component</h2>
                     <div id="form-css">
@@ -124,7 +124,7 @@ class AddLog extends Component {
                         </form>
                     </div>
                 </center>
-            </>
+            </div>
         )
     }
 }

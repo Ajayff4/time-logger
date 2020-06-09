@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddCategory Snapshot Testing... renders component correctly 1`] = `
+<div
+  className="addCategoryComponent"
+>
+  <h2>
+    Add Category Component
+  </h2>
+  <center>
+    <div
+      id="form-css"
+    >
+      <form
+        method="POST"
+        onSubmit={[Function]}
+      >
+        <input
+          id="category"
+          name="category"
+          onChange={[Function]}
+          placeholder="Input category"
+          required={true}
+          type="text"
+          value=""
+        />
+        <br />
+        <button
+          type="submit"
+          value="submit"
+        >
+          Add Category
+        </button>
+        <br />
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          back to add tag
+        </a>
+      </form>
+    </div>
+  </center>
+</div>
+`;

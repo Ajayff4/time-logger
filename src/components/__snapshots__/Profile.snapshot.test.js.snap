@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Profile Snapshot Testing... renders component correctly 1`] = `
+<div
+  id="profileComponent"
+>
+  <center>
+    <div
+      className="container"
+    >
+      <table
+        className="table table-dark table-striped"
+      >
+        <tbody>
+          <tr>
+            <th>
+              #
+            </th>
+            <th>
+              Info
+            </th>
+            <th>
+              Description
+            </th>
+          </tr>
+          <tr>
+            <td>
+              1
+            </td>
+            <td>
+              Username
+            </td>
+            <td />
+          </tr>
+          <tr>
+            <td>
+              2
+            </td>
+            <td>
+              Fullname
+            </td>
+            <td />
+          </tr>
+          <tr>
+            <td>
+              3
+            </td>
+            <td>
+              Email
+            </td>
+            <td />
+          </tr>
+          <tr>
+            <td>
+              4
+            </td>
+            <td>
+              Completed
+            </td>
+            <td>
+              0 log
+            </td>
+          </tr>
+          <tr>
+            <td>
+              5
+            </td>
+            <td>
+              Pending
+            </td>
+            <td>
+              0 log
+            </td>
+          </tr>
+          <tr>
+            <td>
+              6
+            </td>
+            <td>
+              Logtime today
+            </td>
+            <td>
+              0
+               minutes
+            </td>
+          </tr>
+          <tr>
+            <td>
+              7
+            </td>
+            <td>
+              Total logtime
+            </td>
+            <td>
+              0
+               minutes
+            </td>
+          </tr>
+          <tr>
+            <td>
+              8
+            </td>
+            <td>
+              Percentage
+            </td>
+            <td>
+              0.00
+               %
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </center>
+</div>
+`;

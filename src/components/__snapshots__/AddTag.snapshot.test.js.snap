@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTag Snapshot Testing... renders component correctly 1`] = `
+Array [
+  <h2>
+    Add Tag Component
+  </h2>,
+  <center>
+    <div
+      id="form-css"
+    >
+      <form
+        method="POST"
+        onSubmit={[Function]}
+      >
+        <input
+          id="tag"
+          name="tag"
+          onChange={[Function]}
+          placeholder="Input tag name"
+          required={true}
+          type="text"
+          value=""
+        />
+        <br />
+        <select
+          name="category"
+          onChange={[Function]}
+          required={true}
+          value=""
+        >
+          <option
+            value="--"
+          >
+            Choose category
+          </option>
+        </select>
+        <br />
+        <button
+          type="submit"
+          value="submit"
+        >
+          Add Tag
+        </button>
+        <br />
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          Create a new category
+        </a>
+        <br />
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          back to add log
+        </a>
+      </form>
+    </div>
+  </center>,
+]
+`;

@@ -1,7 +1,8 @@
 import React from 'react'
 import {shallow} from 'enzyme'
 import {findByTestAtrr, checkProps} from '../../utils'
-import Profile from './Profile';
+import Profile from './Profile'
+
 
 const setUp = (props = {}) => {
     const component = shallow(<Profile {...props} />);

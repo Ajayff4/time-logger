@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Snapshot Testing... renders component correctly 1`] = `
+<header
+  id="headerComponent"
+>
+  <div
+    className="header"
+    id="header"
+  >
+    <center>
+      <h1
+        id="titleText"
+      >
+        Time Logger App
+      </h1>
+    </center>
+  </div>
+</header>
+`;

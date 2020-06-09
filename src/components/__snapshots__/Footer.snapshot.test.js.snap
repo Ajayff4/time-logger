@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Snapshot Testing... renders component correctly 1`] = `
+<footer
+  id="footerComponent"
+>
+  <div
+    className="footer"
+    id="footer"
+  >
+    <center>
+      <h1
+        data-test="footerText"
+      >
+        Copyright © 2020 | Ajay Agrawal
+      </h1>
+    </center>
+  </div>
+</footer>
+`;

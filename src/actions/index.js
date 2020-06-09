@@ -43,31 +43,9 @@ export const addLog = () => {
     }
 }
 
-export const profileLoad = () => {
-    return {
-        type: ACTIONS.PROFILE_LOAD
-    }
-} 
-
 export const authStart = () => {
     return {
         type: ACTIONS.AUTH_START
-    }
-}
-
-export const authSuccess = (token, username) => {
-    return {
-        type: ACTIONS.AUTH_SUCCESS,
-        payload: {
-            token: token,
-            username: username
-        }
-    }
-}
-
-export const logoutSucceed = () => {
-    return {
-        type: ACTIONS.AUTH_LOGOUT
     }
 }
 

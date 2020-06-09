@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home Snapshot Testing... renders component correctly 1`] = `
+<div
+  className="homeComponent"
+>
+  <center>
+    <div
+      className="homePageText"
+    >
+      <h2>
+        This app is useful for managing time and also useful for self evaluation.
+      </h2>
+      <p>
+        Made By AA077457
+      </p>
+      <p>
+        Thank You!!!
+      </p>
+    </div>
+  </center>
+</div>
+`;

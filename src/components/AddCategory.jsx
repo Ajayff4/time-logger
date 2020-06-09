@@ -43,7 +43,7 @@ class AddCategory extends Component {
 
     render() {
         return (
-            <>
+            <div className="addCategoryComponent">
                 <h2>Add Category Component</h2>
                 <center>
                     <div id="form-css">
@@ -65,7 +65,7 @@ class AddCategory extends Component {
                         </form>
                     </div>
                 </center>
-            </>
+            </div>
         )
     }
 }

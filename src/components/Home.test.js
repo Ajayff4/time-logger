@@ -1,15 +1,15 @@
 import React from 'react'
 import {shallow} from 'enzyme'
-import Header from './Header'
 import {findByTestAtrr} from '../../utils'
+import Home from './Home'
 
 
 const setUp = (props = {}) => {
-    const component = shallow(<Header {...props} />);
+    const component = shallow(<Home {...props} />);
     return component;
 }
 
-describe('Header Component', () => {
+describe('Home Component', () => {
     
     let component;
     beforeEach(() => {
@@ -17,13 +17,13 @@ describe('Header Component', () => {
     })
 
     it('should render without errors', () => {
-        const wrapper = findByTestAtrr(component, '#headerComponent');
+        const wrapper = findByTestAtrr(component, '.homeComponent');
         expect(wrapper.length).toBe(1);
     });
 
-    it('should render header text', () => {
-        const wrapper = findByTestAtrr(component, '#titleText');
+    it('should render home text', () => {
+        const wrapper = findByTestAtrr(component, '.homePageText');
         expect(wrapper.length).toBe(1);
     });
 
-});
+})

@@ -2,6 +2,10 @@ import React from 'react'
 import {shallow} from 'enzyme'
 import {findByTestAtrr} from '../../utils'
 import Footer from './Footer'
+import { Provider } from 'react-redux';
+import store from '../store';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 
 const setUp = (props = {}) => {
     const component = shallow(<Footer {...props} />);

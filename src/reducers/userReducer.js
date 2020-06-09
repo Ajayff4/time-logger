@@ -5,7 +5,7 @@ const initialState = {
     fullname: '--',
     email: '--',
     error: '--',
-    loggedIn: false,
+    loggedIn: false
 }
 
 const userReducer = (state = initialState, action) => {

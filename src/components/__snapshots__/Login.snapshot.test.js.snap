@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Snapshot Testing... renders component correctly 1`] = `
+<center>
+  <div>
+    <fieldset>
+      <legend>
+        Login
+      </legend>
+      <form
+        autoComplete="off"
+        method="POST"
+        onSubmit={[Function]}
+      >
+        <input
+          id="username"
+          name="username"
+          onChange={[Function]}
+          placeholder="username"
+          required={true}
+          type="text"
+          value=""
+        />
+        <br />
+        <input
+          id="password"
+          name="password"
+          onChange={[Function]}
+          placeholder="password"
+          required={true}
+          type="password"
+          value=""
+        />
+        <br />
+        <button
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+    </fieldset>
+  </div>
+</center>
+`;

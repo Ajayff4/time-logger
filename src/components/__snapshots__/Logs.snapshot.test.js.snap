@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logs Snapshot Testing... renders component correctly 1`] = `
+<div
+  id="container"
+>
+  <h2>
+    Logs Component
+  </h2>
+  <center>
+    <h3>
+      No Logs were found
+    </h3>
+  </center>
+</div>
+`;

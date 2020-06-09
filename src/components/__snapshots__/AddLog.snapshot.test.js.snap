@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddLog Snapshot Testing... renders component correctly 1`] = `
+<div
+  id="addLogComponent"
+>
+  <center>
+    <h2>
+      Add Log Component
+    </h2>
+    <div
+      id="form-css"
+    >
+      <form
+        method="POST"
+        onSubmit={[Function]}
+      >
+        <select
+          id="add-log-dropdown"
+          name="tag"
+          onChange={[Function]}
+          required={true}
+          value="--"
+        >
+          <option
+            value="--"
+          >
+            Choose tag
+          </option>
+        </select>
+        <br />
+        <textarea
+          id="add-log-details"
+          name="log_details"
+          onChange={[Function]}
+          placeholder="Input details of log(optional)"
+          required={true}
+          value=""
+        />
+        <br />
+        <button
+          id="add-log-submit"
+          type="submit"
+        >
+          Add Log
+        </button>
+        <br />
+        <a
+          href="#"
+          onClick={[Function]}
+        >
+          Create a new tag
+        </a>
+      </form>
+    </div>
+  </center>
+</div>
+`;
