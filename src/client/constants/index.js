@@ -1,0 +1,13 @@
+const ACTIONS = {
+    ADD_LOG: "ADD_LOG",
+    ADD_TAG: "ADD_TAG",
+    ADD_CATEGORY: "ADD_CATEGORY",
+    LOGIN: "LOGIN",
+    LOGOUT: "LOGOUT",
+    SIGNUP: "SIGNUP",
+    PROFILE_LOAD: "PROFILE_LOAD",
+    ERROR: "ERROR",
+    GET_ALL_LOGS: "GET_ALL_LOGS"
+}
+
+export { ACTIONS };
