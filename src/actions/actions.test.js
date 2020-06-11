@@ -69,21 +69,6 @@ describe('Action Testing', () => {
         expect(actions.logout()).toEqual(expectedAction)
     });
 
-    it(`should create an action as ${ACTIONS.SET_USER_DATA}`, () => {
-        const username = "ajayff4";
-        const fullname = "Ajay Agrawal"
-        const email = "ajayff4@gmail.com"
-        const expectedAction = {
-            type: ACTIONS.SET_USER_DATA,
-            payload: {
-                username,
-                fullname,
-                email
-            }
-        }
-        expect(actions.setUserData(username,fullname,email)).toEqual(expectedAction)
-    });
-
     it(`should create an action as ${ACTIONS.FAILED_TO_FETCH_DATA}`, () => {
         const error = "Error for testing action"
         const expectedAction = {
@@ -128,6 +113,21 @@ describe('Action Testing', () => {
             type: ACTIONS.UNSET_COOKIE
         }
         expect(actions.unsetCookie()).toEqual(expectedAction)
+    });
+
+    it(`should create an action as ${ACTIONS.SET_USER_DATA}`, () => {
+        const username = "ajayff4";
+        const fullname = "Ajay Agrawal"
+        const email = "ajayff4@gmail.com"
+        const expectedAction = {
+            type: ACTIONS.SET_USER_DATA,
+            payload: {
+                username: username,
+                fullname: fullname,
+                email: email
+            }
+        }
+        expect(actions.setUserData(username,fullname,email)).toEqual(expectedAction)
     });
 
 })

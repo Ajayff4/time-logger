@@ -25,10 +25,8 @@ describe('Footer Component', () => {
     });
 
     it('should render footer text', () => {
-        const wrapper = findByTestAtrr(component, 'footerText');
+        const wrapper = findByTestAtrr(component, '#footerText');
         expect(wrapper.length).toBe(1);
     });
 
 })
-
-//console.log(component.debug());

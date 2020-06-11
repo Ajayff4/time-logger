@@ -29,6 +29,7 @@ class HomePage extends Component {
         this.props.logout()
         this.props.history.push('/home')
     }
+
     render() {
         let cookieVerify = document.cookie.length;
         return (
@@ -56,7 +57,7 @@ class HomePage extends Component {
                         <Route path="/" exact ><Home /></Route>
                         <Route path="/home" ><Home /></Route>
                         <Route path="/logs">{cookieVerify?<Logs />:<PageNotFound />}</Route>
-                        <Route path="/add-log"><AddLog /></Route>
+                        <Route path="/add-log">{cookieVerify?<AddLog />:<PageNotFound />}</Route>
                         <Route path="/add-tag">{cookieVerify?<AddTag />:<PageNotFound />}</Route>
                         <Route path="/add-category">{cookieVerify?<AddCategory />:<PageNotFound />}</Route>
                         <Route path="/profile">{cookieVerify?

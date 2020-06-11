@@ -10,7 +10,7 @@ exports[`Footer Snapshot Testing... renders component correctly 1`] = `
   >
     <center>
       <h1
-        data-test="footerText"
+        id="footerText"
       >
         Copyright © 2020 | Ajay Agrawal
       </h1>

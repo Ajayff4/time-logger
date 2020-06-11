@@ -55,15 +55,6 @@ export const logout = () => {
     }
 }
 
-export const checkAuthTimeout = (expirationTime) => {
-    return {
-        type: ACTIONS.AUTH_CHECK_TIMEOUT,
-        payload: {
-            expirationTime: expirationTime
-        }
-    }
-}
-
 export const setUserData = (username, fullname, email) => {
     return {
         type: ACTIONS.SET_USER_DATA,

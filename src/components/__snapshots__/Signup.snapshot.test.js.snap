@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Signup Snapshot Testing... renders component correctly 1`] = `
+<center>
+  <div>
+    <fieldset>
+      <legend>
+        Signup
+      </legend>
+      <form
+        autoComplete="off"
+        method="POST"
+        onSubmit={[Function]}
+      >
+        <input
+          id="username"
+          name="username"
+          onChange={[Function]}
+          placeholder="username"
+          required={true}
+          type="text"
+          value=""
+        />
+        <br />
+        <input
+          autoComplete="off"
+          id="fullname"
+          name="fullname"
+          onChange={[Function]}
+          placeholder="fullname"
+          required={true}
+          type="text"
+          value=""
+        />
+        <br />
+        <input
+          autoComplete="off"
+          id="email"
+          name="email"
+          onChange={[Function]}
+          placeholder="email"
+          required={true}
+          type="email"
+          value=""
+        />
+        <br />
+        <input
+          id="password"
+          name="password"
+          onChange={[Function]}
+          placeholder="password"
+          required={true}
+          style={
+            Object {
+              "borderBlockColor": "lime",
+            }
+          }
+          type="password"
+          value=""
+        />
+        <br />
+        <input
+          id="repassword"
+          name="repassword"
+          onChange={[Function]}
+          placeholder="repeat password"
+          required={true}
+          type="password"
+          value=""
+        />
+        <br />
+        <button
+          type="submit"
+        >
+          Sign Up
+        </button>
+      </form>
+    </fieldset>
+  </div>
+</center>
+`;

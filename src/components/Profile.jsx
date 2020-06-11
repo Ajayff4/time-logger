@@ -15,10 +15,9 @@ export default class Profile extends Component {
         let totalLogTime = 0
         if(this.props.logs!==undefined && this.props.logs.length>0){
             //eslint-disable-next-line
-
             this.props.logs.map(log => {
-                if(log.completed===1) completed++
-                else pending++
+                //eslint-disable-next-line
+                log.completed==1? completed++ : pending++;
                 
                 let today = new Date().toLocaleDateString().split("/")
                 today = today[2] + "-" + today[1] + "-" + today[0];

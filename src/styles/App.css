@@ -1,3 +1,27 @@
+.toastSuccess{
+  background-color: mediumspringgreen;
+  font-size: larger;
+  height: 150px;
+  width: 200px;
+  position: fixed;
+  top: 100px;
+  right: 0;
+}
+
+.toastFailure {
+  background-color: darkred;
+  font-size: larger;
+  height: 150px;
+  width: 200px;
+  position: fixed;
+  top: 100px;
+  right: 0;
+}
+
+.toastBody {
+  height: 100px;
+}
+
 #table-wrapper {
   position:relative;
 }
@@ -145,6 +169,10 @@ input[type=email] {
   width: 70%;
   border: none;
   box-shadow: 5px 8px 8px #888888;
+}
+
+body{
+  background-color: #888888;
 }
 
 input[type=text]:hover,

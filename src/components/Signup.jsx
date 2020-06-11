@@ -4,6 +4,7 @@ import * as actions from '../actions'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
+import Toast from './Toast'
 
 class Signup extends Component {
     static propTypes = {
@@ -16,7 +17,17 @@ class Signup extends Component {
         fullname: "",
         email: "",
         password: "",
-        repassword: ""
+        repassword: "",
+        toast: {
+            status: false,
+            title: "",
+            type: "",
+            message: ""
+        }
+    }
+
+    renderToast = () => {
+        setTimeout(() => this.setState({toast: false}),3000)
     }
 
     onChange = (e) => {
@@ -40,8 +51,27 @@ class Signup extends Component {
             })
             .then(res => {
                 this.props.signup()
+                this.setState({
+                    ...this.state,
+                    toast: {
+                        ...this.state.toast,
+                        status: true,
+                        title: "Signup",
+                        type: "toastSuccess",
+                        message: "Signup Successful."
+                    }
+                })
+                this.renderToast()
                 this.props.history.push('/login')
             }).catch(err => {
+                this.setState({
+                    ...this.state.toast,
+                    status:true,
+                    title: "Signup",
+                    type: "toastSuccess",
+                    message: "Signup Successful."
+                })
+                this.renderToast()
                 this.props.failedToFetchData(`${err}`);
             })
         }
@@ -51,9 +81,20 @@ class Signup extends Component {
         return (
             <center>
                 <div>
+                    {this.state.toast.status? 
+                        <Toast
+                            title={this.state.toast.title}
+                            type={this.state.toast.type}
+                            message={this.state.toast.message} 
+                        />
+                    :null}
                     <fieldset>
                         <legend>Signup</legend>
-                        <form method="POST" onSubmit={this.onSubmit} autoComplete="off">
+                        <form 
+                            method="POST" 
+                            onSubmit={this.onSubmit} 
+                            autoComplete="off"
+                        >
                             <input
                                 type="text"
                                 name="username"
@@ -63,6 +104,7 @@ class Signup extends Component {
                                 onChange={this.onChange}
                                 required
                             /><br />
+                            
                             <input
                                 type="text"
                                 name="fullname"
@@ -73,6 +115,7 @@ class Signup extends Component {
                                 required
                                 autoComplete="off"
                             /><br />
+            
                             <input
                                 type="email"
                                 name="email"
@@ -83,6 +126,7 @@ class Signup extends Component {
                                 required
                                 autoComplete="off"
                             /><br />
+
                             <input
                                 type="password"
                                 name="password"
@@ -91,7 +135,9 @@ class Signup extends Component {
                                 value={this.state.password}
                                 onChange={this.onChange}
                                 required
+                                style={{borderBlockColor: 'lime'}}
                             /><br />
+
                             <input
                                 type="password"
                                 name="repassword"
@@ -101,6 +147,7 @@ class Signup extends Component {
                                 onChange={this.onChange}
                                 required
                             /><br />
+
                             <button type="submit">Sign Up</button>
                         </form>
                     </fieldset>
